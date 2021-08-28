@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class AuthorsController extends Controller
 {
+
+    public function getAuthor($id)
+    {
+        return Authors::findOrFail($id);
+    }
+
     public function createAuthor(Request $request)
     {
         $data = $request->all();
