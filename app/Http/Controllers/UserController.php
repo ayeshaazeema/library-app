@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -54,6 +57,7 @@ class UserController extends Controller
 
         // Auth attempt untuk mengecek apakah data(email dan password) sesuai
         if ($user && Hash::check($request->password, $user->password)) {
+
             // Membuat token
             $token = Str::random(60);
             $user->remember_token = $token;
@@ -66,6 +70,7 @@ class UserController extends Controller
                 "user" => $user
             ], 200);
         }
+
         return response()->json([
             "status" => 401,
             "message" => "failed",
@@ -87,6 +92,7 @@ class UserController extends Controller
                 "message" => "success",
             ], 200);
         }
+
         return response()->json([
             "status" => 401,
             "message" => "failed",
@@ -115,9 +121,8 @@ class UserController extends Controller
             $user->email = $input['email'];
         }
 
-        $password = Hash::make($request->password);
-        if (isset($password)) {
-            $user->password = $input['password'];
+        if (isset($passwordd)) {
+            $user->password = Hash::make($input['password']);
         }
 
         // Save ke database

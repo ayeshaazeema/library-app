@@ -32,4 +32,14 @@ class Books extends Model
         'rating' => 'double',
         'stock' => 'integer',
     ];
+
+    public function author()
+    {
+        return $this->belongsTo(Authors::class);
+    }
+
+    public function publisher()
+    {
+        return $this->belongsTo(Publishers::class);
+    }
 }

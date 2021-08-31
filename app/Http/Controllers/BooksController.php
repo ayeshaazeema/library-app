@@ -35,7 +35,7 @@ class BooksController extends Controller
             return response()->json(compact('status', 'book'), 200);
         } catch (\Throwable $th) {
             $status = 'error';
-            return response()->json(compact('status', 'th'), 200);
+            return response()->json(compact('status', 'th'), 401);
         }
     }
 

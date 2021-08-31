@@ -14,4 +14,9 @@ class Authors extends Model
         'description',
         'url',
     ];
+
+    public function book()
+    {
+        return $this->hasMany(Books::class);
+    }
 }

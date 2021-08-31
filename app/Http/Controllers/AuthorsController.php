@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class AuthorsController extends Controller
 {
-
     public function getAuthor($id)
     {
         return Authors::findOrFail($id);
@@ -29,7 +28,7 @@ class AuthorsController extends Controller
             return response()->json(compact('status', 'author'), 200);
         } catch (\Throwable $th) {
             $status = 'error';
-            return response()->json(compact('status', 'th'), 200);
+            return response()->json(compact('status'), 200);
         }
     }
 
@@ -49,7 +48,7 @@ class AuthorsController extends Controller
             return response()->json(compact('status', 'author'), 200);
         } catch (\Throwable $th) {
             $status = 'error';
-            return response()->json(compact('status', 'th'), 200);
+            return response()->json(compact('status'), 200);
         }
     }
 
