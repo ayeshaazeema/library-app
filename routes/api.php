@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BooksController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthorsController;
+use App\Http\Controllers\PublishersController;
 
 /*
 |--------------------------------------------------------------------------
